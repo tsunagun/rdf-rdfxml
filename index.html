@@ -31,7 +31,8 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h1>RDF::RDFXML reader/writer</h1>
+        <h1>RDF::RDFXML reader/writer <a href="http://travis-ci.org/ruby-rdf/rdf-rdfxml"><img src="https://secure.travis-ci.org/ruby-rdf/rdf-rdfxml.png?branch=master" alt="Build Status"></a>
+</h1>
 
 <p><a href="http://www.w3.org/TR/REC-rdf-syntax/" title="RDF/XML Syntax Specification">RDF/XML</a> parser for <a href="http://rubygems.org/gems/rdf">RDF.rb</a>.</p>
 
@@ -64,6 +65,7 @@ end
 <li>
 <a href="http://rubygems.org/gems/rdf">RDF.rb</a> (&gt;= 0.3.4)</li>
 <li>Soft dependency on <a href="http://rubygems.org/gems/nokogiri">Nokogiri</a> (&gt;= 1.5.0)</li>
+<li>Does not run properly on jRuby due to [Nokogiri][] issues.</li>
 </ul><h2>Documentation</h2>
 
 <p>Full documentation available on <a href="http://rubydoc.info/github/ruby-rdf/rdf-rdfxml/master/frames">RubyForge</a></p>
@@ -90,6 +92,7 @@ end
 <ul>
 <li>Add support for LibXML and REXML bindings, and use the best available</li>
 <li>Consider a SAX-based parser for improved performance</li>
+<li>jRuby integration awaiting improvements in Nokogiri</li>
 </ul><h2>Resources</h2>
 
 <ul>
@@ -103,12 +106,14 @@ end
 
 <ul>
 <li>
-<a href="http://github.com/gkellogg">Gregg Kellogg</a> - <a href="http://kellogg-assoc.com/">http://kellogg-assoc.com/</a>
+<a href="http://github.com/gkellogg">Gregg Kellogg</a> - <a href="http://greggkellogg.net/">http://greggkellogg.net/</a>
 </li>
 </ul><h2>Contributors</h2>
 
 <ul>
-<li><a href="http://github.com/njh">Nicholas Humfrey</a></li>
+<li>
+<a href="http://github.com/njh">Nicholas Humfrey</a> - <a href="http://njh.me/">http://njh.me/</a>
+</li>
 </ul><h2>Contributing</h2>
 
 <ul>

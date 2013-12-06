@@ -31,24 +31,34 @@
     <!-- MAIN CONTENT -->
     <div id="main_content_wrap" class="outer">
       <section id="main_content" class="inner">
-        <h1>RDF::RDFXML reader/writer <a href="http://travis-ci.org/ruby-rdf/rdf-rdfxml"><img src="https://secure.travis-ci.org/ruby-rdf/rdf-rdfxml.png?branch=master" alt="Build Status"></a>
-</h1>
+        <h1>
+<a name="rdfrdfxml-readerwriter" class="anchor" href="#rdfrdfxml-readerwriter"><span class="octicon octicon-link"></span></a>RDF::RDFXML reader/writer</h1>
 
-<p><a href="http://www.w3.org/TR/REC-rdf-syntax/" title="RDF/XML Syntax Specification">RDF/XML</a> parser for <a href="http://rubygems.org/gems/rdf">RDF.rb</a>.</p>
+<p><a href="http://www.w3.org/TR/REC-rdf-syntax/" title="RDF/XML Syntax Specification">RDF/XML</a> reader/writer for <a href="http://rubygems.org/gems/rdf">RDF.rb</a>.</p>
 
-<h2>DESCRIPTION</h2>
+<p><a href="http://badge.fury.io/rb/rdf-rdfxml"><img src="https://badge.fury.io/rb/rdf-rdfxml.png" alt="Gem Version"></a>
+<a href="http://travis-ci.org/ruby-rdf/rdf-rdfxml"><img src="https://secure.travis-ci.org/ruby-rdf/rdf-rdfxml.png?branch=master" alt="Build Status"></a></p>
 
-<p>RDF::RDFXML is an <a href="http://www.w3.org/TR/REC-rdf-syntax/" title="RDF/XML Syntax Specification">RDF/XML</a> reader/writer for Ruby using the <a href="http://rubygems.org/gems/rdf">RDF.rb</a> library suite.</p>
+<h2>
+<a name="description" class="anchor" href="#description"><span class="octicon octicon-link"></span></a>DESCRIPTION</h2>
 
-<h2>FEATURES</h2>
+<p>RDF::RDFXML is an <a href="http://www.w3.org/TR/REC-rdf-syntax/" title="RDF/XML Syntax Specification">RDF/XML</a> reader/writer for <a href="http://ruby-lang.org/">Ruby</a> using the <a href="http://rubygems.org/gems/rdf">RDF.rb</a> library suite.</p>
 
-<p>RDF::RDFXML parses <a href="http://www.w3.org/TR/REC-rdf-syntax/" title="RDF/XML Syntax Specification">RDF/XML</a> into statements or triples and serializes triples, statements or graphs.</p>
+<h2>
+<a name="features" class="anchor" href="#features"><span class="octicon octicon-link"></span></a>FEATURES</h2>
+
+<p>RDF::RDFXML parses <a href="http://www.w3.org/TR/REC-rdf-syntax/" title="RDF/XML Syntax Specification">RDF/XML</a> into statements or triples and serializes triples, statements or graphs. It also serializes graphs to <a href="http://www.w3.org/TR/REC-rdf-syntax/" title="RDF/XML Syntax Specification">RDF/XML</a>.</p>
 
 <p>Fully compliant <a href="http://www.w3.org/TR/REC-rdf-syntax/" title="RDF/XML Syntax Specification">RDF/XML</a> parser and serializer.</p>
 
 <p>Install with <code>gem install rdf-rdfxml</code></p>
 
-<h2>Usage:</h2>
+<ul>
+<li>100% free and unencumbered <a href="http://unlicense.org/">public domain</a> software.</li>
+<li>Implements a complete parser for <a href="http://www.w3.org/TR/REC-rdf-syntax/" title="RDF/XML Syntax Specification">RDF/XML</a>.</li>
+<li>Compatible with Ruby &gt;= 1.9.2.</li>
+</ul><h2>
+<a name="usage" class="anchor" href="#usage"><span class="octicon octicon-link"></span></a>Usage:</h2>
 
 <p>Instantiate a parser and parse source, specifying type and base-URL</p>
 
@@ -59,62 +69,74 @@
 end
 </code></pre>
 
-<h2>Dependencies</h2>
+<p>Define <code>xml:base</code> and <code>xmlns</code> definitions, and use for serialization using <code>:base_uri</code> an <code>:prefixes</code> options.</p>
+
+<p>Canonicalize and validate using <code>:canonicalize</code> and <code>:validate</code> options.</p>
+
+<p>Write a graph to a file:</p>
+
+<pre><code>RDF::RDFXML::Writer.open("etc/test.ttl") do |writer|
+   writer &lt;&lt; graph
+end
+</code></pre>
+
+<h2>
+<a name="dependencies" class="anchor" href="#dependencies"><span class="octicon octicon-link"></span></a>Dependencies</h2>
 
 <ul>
 <li>
-<a href="http://rubygems.org/gems/rdf">RDF.rb</a> (&gt;= 0.3.4)</li>
-<li>Soft dependency on <a href="http://rubygems.org/gems/nokogiri">Nokogiri</a> (&gt;= 1.5.0)</li>
-<li>Does not run properly on jRuby due to [Nokogiri][] issues.</li>
-</ul><h2>Documentation</h2>
+<a href="http://rubygems.org/gems/rdf">RDF.rb</a> (&gt;= 1.1)</li>
+<li>Soft dependency on <a href="http://rubygems.org/gems/nokogiri">Nokogiri</a> (&gt;= 1.6.0)</li>
+</ul><h2>
+<a name="documentation" class="anchor" href="#documentation"><span class="octicon octicon-link"></span></a>Documentation</h2>
 
-<p>Full documentation available on <a href="http://rubydoc.info/github/ruby-rdf/rdf-rdfxml/master/frames">RubyForge</a></p>
+<p>Full documentation available on <a href="http://rubydoc.info/github/ruby-rdf/rdf-rdfxml/master/frames">Rubydoc.info</a>)</p>
 
-<h3>Principle Classes</h3>
+<h3>
+<a name="principle-classes" class="anchor" href="#principle-classes"><span class="octicon octicon-link"></span></a>Principle Classes</h3>
 
 <ul>
 <li>{RDF::RDFXML}</li>
 <li>{RDF::RDFXML::Format}</li>
 <li>{RDF::RDFXML::Reader}</li>
 <li>{RDF::RDFXML::Writer}</li>
-</ul><h3>Additional vocabularies</h3>
+</ul><h3>
+<a name="additional-vocabularies" class="anchor" href="#additional-vocabularies"><span class="octicon octicon-link"></span></a>Additional vocabularies</h3>
 
 <ul>
 <li>{RDF::XML}</li>
-</ul><h3>Patches</h3>
+</ul><h2>
+<a name="todo" class="anchor" href="#todo"><span class="octicon octicon-link"></span></a>TODO</h2>
 
 <ul>
-<li>{Array}</li>
-<li>{RDF::Graph}</li>
-<li>{Nokogiri::XML::Node}</li>
-</ul><h2>TODO</h2>
-
-<ul>
-<li>Add support for LibXML and REXML bindings, and use the best available</li>
 <li>Consider a SAX-based parser for improved performance</li>
-<li>jRuby integration awaiting improvements in Nokogiri</li>
-</ul><h2>Resources</h2>
+</ul><h2>
+<a name="resources" class="anchor" href="#resources"><span class="octicon octicon-link"></span></a>Resources</h2>
 
 <ul>
 <li><a href="http://rubygems.org/gems/rdf">RDF.rb</a></li>
 <li><a href="http://www.w3.org/TR/REC-rdf-syntax/" title="RDF/XML Syntax Specification">RDF/XML</a></li>
-<li><a href="http://distiller.kellogg-assoc">Distiller</a></li>
-<li><a href="http://rubygems.org/gems/rdf-rdfxml">Documentation</a></li>
-<li><a>History</a></li>
+<li><a href="http://rdf.greggkellogg.net">Distiller</a></li>
+<li><a href="http://rubydoc.info/github/ruby-rdf/rdf-rdfxml/master/frames">Documentation</a></li>
 <li><a href="http://www.w3.org/2000/10/rdf-tests/rdfcore/allTestCases.html">RDF Tests</a></li>
-</ul><h2>Author</h2>
+</ul><h2>
+<a name="author" class="anchor" href="#author"><span class="octicon octicon-link"></span></a>Author</h2>
 
 <ul>
 <li>
 <a href="http://github.com/gkellogg">Gregg Kellogg</a> - <a href="http://greggkellogg.net/">http://greggkellogg.net/</a>
 </li>
-</ul><h2>Contributors</h2>
+</ul><h2>
+<a name="contributors" class="anchor" href="#contributors"><span class="octicon octicon-link"></span></a>Contributors</h2>
 
 <ul>
 <li>
 <a href="http://github.com/njh">Nicholas Humfrey</a> - <a href="http://njh.me/">http://njh.me/</a>
 </li>
-</ul><h2>Contributing</h2>
+</ul><h2>
+<a name="contributing" class="anchor" href="#contributing"><span class="octicon octicon-link"></span></a>Contributing</h2>
+
+<p>This repository uses <a href="https://github.com/nvie/gitflow">Git Flow</a> to mange development and release activity. All submissions <em>must</em> be on a feature branch based on the <em>develop</em> branch to ease staging and integration.</p>
 
 <ul>
 <li>Do your best to adhere to the existing coding conventions and idioms.</li>
@@ -128,15 +150,17 @@ list in the the <code>README</code>. Alphabetical order applies.</li>
 <li>Do note that in order for us to merge any non-trivial changes (as a rule
 of thumb, additions larger than about 15 lines of code), we need an
 explicit <a href="http://lists.w3.org/Archives/Public/public-rdf-ruby/2010May/0013.html">public domain dedication</a> on record from you.</li>
-</ul><h2>License</h2>
+</ul><h2>
+<a name="license" class="anchor" href="#license"><span class="octicon octicon-link"></span></a>License</h2>
 
 <p>This is free and unencumbered public domain software. For more information,
 see <a href="http://unlicense.org/">http://unlicense.org/</a> or the accompanying {file:UNLICENSE} file.</p>
 
-<h2>FEEDBACK</h2>
+<h2>
+<a name="feedback" class="anchor" href="#feedback"><span class="octicon octicon-link"></span></a>FEEDBACK</h2>
 
 <ul>
-<li><a href="mailto:gregg@kellogg-assoc.com">gregg@kellogg-assoc.com</a></li>
+<li><a href="mailto:gregg@greggkellogg.net">gregg@greggkellogg.net</a></li>
 <li><a href="http://rubygems.org/rdf-rdfxml">http://rubygems.org/rdf-rdfxml</a></li>
 <li><a href="http://github.com/ruby-rdf/rdf-rdfxml">http://github.com/ruby-rdf/rdf-rdfxml</a></li>
 <li><a href="http://lists.w3.org/Archives/Public/public-rdf-ruby/">http://lists.w3.org/Archives/Public/public-rdf-ruby/</a></li>

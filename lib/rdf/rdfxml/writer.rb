@@ -360,7 +360,36 @@ module RDF::RDFXML
         # Add bindings for predicates not already having bindings
         # From RDF/XML Syntax and Processing:
         #   An XML namespace-qualified name (QName) has restrictions on the legal characters such that not all property URIs can be expressed as these names. It is recommended that implementors of RDF serializers, in order to break a URI into a namespace name and a local name, split it after the last XML non-NCName character, ensuring that the first character of the name is a Letter or '_'. If the URI ends in a non-NCName character then throw a "this graph cannot be serialized in RDF/XML" exception or error.
-        separation = uri.rindex(%r{[^a-zA-Z_0-9-][a-zA-Z_][a-z0-9A-Z_-]*$})
+        #
+        # following regexps are based on http://www.w3.org/TR/REC-xml/#d0e804
+        regexp_name_start_chars = [
+          ':',
+          "[A-Z]",
+          "_",
+          "[a-z]",
+          "[#{[0xC0].pack('U*')}-#{[0xD6].pack('U*')}]",
+          "[#{[0xD8].pack('U*')}-#{[0xF6].pack('U*')}]",
+          "[#{[0xF8].pack('U*')}-#{[0x2FF].pack('U*')}]",
+          "[#{[0x370].pack('U*')}-#{[0x37D].pack('U*')}]",
+          "[#{[0x37F].pack('U*')}-#{[0x1FFF].pack('U*')}]",
+          "[#{[0x200C].pack('U*')}-#{[0x200D].pack('U*')}]",
+          "[#{[0x2070].pack('U*')}-#{[0x218F].pack('U*')}]",
+          "[#{[0x2C00].pack('U*')}-#{[0x2FEF].pack('U*')}]",
+          "[#{[0x3001].pack('U*')}-#{[0xD7FF].pack('U*')}]",
+          "[#{[0xF900].pack('U*')}-#{[0xFDCF].pack('U*')}]",
+          "[#{[0xFDF0].pack('U*')}-#{[0xFFFD].pack('U*')}]",
+          "[#{[0x10000].pack('U*')}-#{[0xEFFFF].pack('U*')}]",
+        ]
+        regexp_name_chars = regexp_name_start_chars + [
+          ".",
+          "[0-9]",
+          "[#{[0xB7].pack('U*')}]",
+          "[#{[0x0300].pack('U*')}-#{[0x036F].pack('U*')}]",
+          "[#{[0x203F].pack('U*')}-#{[0x2040].pack('U*')}]",
+          "-",
+        ]
+        regexp = Regexp.new("[^#{regexp_name_chars.join}][#{regexp_name_start_chars.join}][#{regexp_name_chars.join}]*$")
+        separation = uri.rindex(regexp)
         return @uri_to_prefix[uri] = nil unless separation
         base_uri = uri.to_s[0..separation]
         suffix = uri.to_s[separation+1..-1]
